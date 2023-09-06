@@ -1,12 +1,9 @@
 import Card from '@mui/joy/Card';
-import CardContent from '@mui/joy/CardContent';
-import IconButton from '@mui/joy/IconButton';
+import Box from '@mui/joy/Box';
 import Tooltip from '@mui/joy/Tooltip';
 import Typography from '@mui/joy/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Grid from '@mui/joy/Grid';
 import MoreEventInformation from './MoreEventInformation';
-import CardOverflow from '@mui/joy/CardOverflow';
+import Chip from '@mui/joy/Chip';
 
 type EventDetailType = {
     id: number;
@@ -18,44 +15,67 @@ type EventDetailType = {
 
 export default function EventCard({ eventDetail }: { eventDetail: EventDetailType }) {
     return (
-        <Card
-            variant="outlined"
-            orientation="horizontal"
-            sx={{
-                textAlign: 'left',
-                width: 300,
-                overflow: 'auto',
-                boxShadow: 'lg'
-            }}
+        <Tooltip
+            enterDelay={750}
+            enterNextDelay={750}
+            title={<MoreEventInformation key={eventDetail.id} eventDetail={eventDetail} />}
+            variant="soft"
+            sx={{ mb: -1, mr: -1, mt: -2 }}
         >
-            <CardOverflow
-                variant="solid"
-                color="primary"
+            <Card
+                variant="outlined"
+                orientation="horizontal"
                 sx={{
-                    flex: '0 0 60px',
+                    width: 300,
                     display: 'flex',
+                    boxShadow: 'lg',
+                    padding: 1,
+                    gap: 0
                 }}
             >
-                <Typography>
-                    {eventDetail.time}
-                </Typography>
-            </CardOverflow>
-            <CardContent>
-                <Typography level="body-xs">{eventDetail.class}</Typography>
-                <Grid
-                    container
-                    direction="row"
-                    justifyContent="space-between"
-                    alignItems="flex-end"
+                <Box
+                    sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        padding: 0,
+                        border: 'none'
+                    }}
                 >
-                    <Typography level="h4">{eventDetail.event}</Typography>
-                    <Tooltip title={<MoreEventInformation key={eventDetail.id} eventDetail={eventDetail} />} variant="soft" sx={{ mb: -1, mr: -1, mt: -2 }}>
-                        <IconButton>
-                            <ExpandMoreIcon />
-                        </IconButton>
-                    </Tooltip>
-                </Grid>
-            </CardContent>
-        </Card >
+                    <Chip size="sm" variant="outlined"
+                        sx={{
+                            height: 30
+                        }}>
+                        {eventDetail.time}
+                    </Chip>
+                </Box>
+                <Box
+                    sx={{
+                        margin: 0,
+                        padding: 1,
+                        flexGrow: 1,
+                        overflow: 'hidden',
+                    }}>
+                    <Typography
+                        noWrap
+                        level="body-xs"
+                        sx={{
+                            textOverflow: 'ellipsis',
+                        }}
+                    >
+                        {eventDetail.class}
+                    </Typography>
+                    <Typography
+                        noWrap
+                        level="h4"
+                        sx={{
+                            textOverflow: 'ellipsis',
+                        }}>
+                        {eventDetail.event}
+                    </Typography>
+                </Box>
+            </Card >
+        </Tooltip >
+
     );
 }

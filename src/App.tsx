@@ -8,8 +8,8 @@ export default function App() {
   const events = [
     {
       id: 1,
-      class: 'COMPUTER SCIENCE 1ST YR SEM',
-      event: 'User Analysis Reflection',
+      class: 'COMPUTER SCIENCE 1ST YR SEM asdfasdf;slkj ',
+      event: 'Professional and Personal Development- Event Reflection #1',
       date: '9/10/2023',
       time: '11:59 pm',
       points: '100',
@@ -17,7 +17,7 @@ export default function App() {
     },
     {
       id: 2,
-      class: 'PUBLIC SPEAKING',
+      class: 'MGT_1064_87784_202309',
       event: 'REAL PS 2',
       date: '9/13/2023',
       time: '11:59 pm',

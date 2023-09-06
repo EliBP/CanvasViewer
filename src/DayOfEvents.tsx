@@ -1,4 +1,4 @@
-import Card from '@mui/joy/Card';
+import Box from '@mui/joy/Box';
 import EventCard from './EventCard';
 import Typography from '@mui/joy/Typography';
 
@@ -21,11 +21,17 @@ interface DayOfEventsProps {
 // Define the DayOfEvents component
 export default function DayOfEvents({ eventsForDay }: DayOfEventsProps) {
     return (
-        <Card>
-            <Typography>
+        <Box
+            sx={{
+                textAlign: 'left',
+                padding: 0,
+            }}
+        >
+            <Typography level='title-md'>
                 {eventsForDay[0].date}
             </Typography>
             {eventsForDay.map((event: EventType) => <EventCard key={event.id} eventDetail={event} />)}
-        </Card >
+        </Box>
+
     );
 }
